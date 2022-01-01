@@ -16,7 +16,7 @@
 <b>City</b>${product.city}<br>
 <b>Author</b>${product.author}<br>
 <hr>
-<form action="/product/delete/${product.id}" method="delete">
+<form action="/product/delete/${product.id}" method="post">
     <input type="submit" value="Delete product">
 </form>
 </body>

@@ -10,10 +10,16 @@
 <body>
     <h1>Hello BUYSELL!</h1>
     <h4>Kazakhstan</h4>
+    <form action="/" method="get">
+        Search by ad name: <input type="text" name="title"><br>
+        <input type="submit" value="Search">
+    </form>
     <#list products as product>
         <div>
             <p><b>${product.title}</b> ${product.price} | <a href="/product/${product.id}">Details</a></p>
         </div>
+        <#else>
+        <h3>No products</h3>
     </#list>
     <hr>
     <h3>Create new product</h3>
