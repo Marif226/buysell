@@ -10,6 +10,9 @@
 <body>
 <h1>Hello BUYSELL!</h1>
 <h4>Product's details</h4>
+<#list images as img>
+    <img src="/images/${img.id}" height="60px"><br><br>
+</#list>
 <b>Product's name</b>${product.title}<br>
 <b>Product's description</b>${product.description}<br>
 <b>Price</b>${product.price}<br>
