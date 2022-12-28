@@ -1,22 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
-	"github.com/Marif226/buysell/internal/database"
+	"github.com/Marif226/buysell/pkg/database"
 	"github.com/Marif226/buysell/internal/handlers"
+	"github.com/Marif226/buysell/internal/repository/dbrepo"
 )
 
-var db database.Database
+const portNumber = ":8080"
 
 func main() {
-	db = database.CreateDB()
-
-	repo := handlers.NewRepo(&db)
-	handlers.SetRepo(repo)
+	dbSetup()
 
 	server := &http.Server {
-		Addr: ":8080",
+		Addr: portNumber,
 		Handler: routes(),
 	}
 
@@ -31,4 +30,16 @@ func routes() http.Handler {
 	router.Add("DELETE /user/delete/", handlers.Repo.DeleteUser)
 	
 	return router
+}
+
+func dbSetup() {
+	driver, err := database.NewDriver("./db")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	dbRepo := dbrepo.NewMyDbRepo(driver)
+
+	repo := handlers.NewRepo(dbRepo)
+	handlers.SetRepo(repo)
 }

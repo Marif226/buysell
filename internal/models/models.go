@@ -1,24 +1,26 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 // Product is the product model
 type Product struct {
-	ID          int
-	Title       string
-	Description string
-	Price       int
-	Author      User
-	Location    string
-	CreatedAt   time.Time
-	UpdatedAt	time.Time
+	ID          uint		`json:"id"`
+	Title       string		`json:"title"`
+	Description string		`json:"description"`
+	Price       uint		`json:"price"`
+	Author      User		`json:"author"`
+	Location    string		`json:"location"`
+	CreatedAt   time.Time	`json:"created_at"`
+	UpdatedAt	time.Time	`json:"updated_at"`
 }
 
 // User is the user model
 type User struct {
-	ID        int
-	FirstName string
-	LastName  string
-	Email     string
-	Password  string
+	ID        uint		`json:"id"`
+	FirstName string	`json:"first_name"`
+	LastName  string	`json:"last_name"`
+	Email     string	`json:"email"`
+	Password  string	`json:"password"`
 }
